@@ -41,9 +41,6 @@ namespace Model
                 default:
                    throw new Exception("Invalid shape");
             }
-
-
-            
         }
 
         public void Paint()
