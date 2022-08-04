@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Threading.Tasks;
@@ -57,6 +58,46 @@ namespace API.Diagram.Controllers
             return await Task.FromResult(response);
         }
 
+
+        /// <summary>
+        /// Add shape to the canvas
+        /// </summary>
+        /// <param name="shape">Valid values: line, circle, rectangle</param>
+        /// <param name="color">Any valid value from defined in Color Struct https://docs.microsoft.com/en-us/dotnet/api/system.drawing.color?view=net-6.0</param>
+        /// <returns>Returns 200 if all OK else BadRequest</returns>
+        [HttpPost()]
+        [Route("shape/{shape}/color/{color}")]
+        public async Task<ActionResult<ServiceResult<bool>>> AddShape(string shape, string color)
+        {
+            try
+            {
+                var result = await _imageService.AddShape(shape, color);
+                var response = new ServiceResult<bool>
+                {
+                    Result = result,
+                    HttpStatusCode = result ? HttpStatusCode.OK : HttpStatusCode.NotFound,
+                    Message = new Message
+                    {
+                        Code = result ? HttpStatusCode.OK.ToString() : HttpStatusCode.NotFound.ToString()
+                    }
+                };
+                return await Task.FromResult(response);
+            }
+            catch (Exception e)
+            {
+                var response = new ServiceResult<bool>
+                {
+                    Result = false,
+                    HttpStatusCode = HttpStatusCode.BadRequest,
+                    Message = new Message
+                    {
+                        Code = HttpStatusCode.BadRequest.ToString(),
+                        Description = e.Message
+                    }
+                };
+                return await Task.FromResult(response);
+            }
+        }
 
         [HttpGet()]
         [Route("paint")]

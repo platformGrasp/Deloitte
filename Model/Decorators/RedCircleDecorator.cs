@@ -12,11 +12,11 @@ namespace Model.Decorators
 
         public override int Draw()
         {
-            setColor();
+            SetColor();
             return Shape.Draw();
         }
 
-        private void setColor()
+        private void SetColor()
         {
             Debug.WriteLine("Circle Color: Red");
             System.Console.WriteLine("Circle Color: Red");

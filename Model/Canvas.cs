@@ -1,4 +1,7 @@
-﻿using Model.Decorators;
+﻿using System;
+using System.Drawing;
+using System.Threading.Tasks;
+using Model.Decorators;
 using Model.Shapes;
 
 namespace Model
@@ -22,6 +25,26 @@ namespace Model
             _diagram.AddShape(new GreenLineDecorator(new Line()));
         }
 
+        public void AddShape(string shape, Color color)
+        {
+            switch (shape.ToLower())
+            {
+                case "line":
+                    _diagram.AddShape(new CompositShapeDecorator(new Line(), color));
+                    break;
+                case "circle":
+                    _diagram.AddShape(new CompositShapeDecorator(new Circle(), color));
+                    break;
+                case "rectangle":
+                    _diagram.AddShape(new CompositShapeDecorator(new Shapes.Rectangle(), color));
+                    break;
+                default:
+                   throw new Exception("Invalid shape");
+            }
+
+
+            
+        }
 
         public void Paint()
         {

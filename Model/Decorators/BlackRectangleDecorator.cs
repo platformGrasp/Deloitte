@@ -12,11 +12,11 @@ namespace Model.Decorators
 
         public override int Draw()
         {
-            setColor();
+            SetColor();
             return Shape.Draw();
         }
 
-        private void setColor()
+        private void SetColor()
         {
             Debug.WriteLine("Rectangle Color: Black");
             System.Console.WriteLine("Rectangle Color: Black");

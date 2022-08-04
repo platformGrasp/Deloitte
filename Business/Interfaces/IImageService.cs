@@ -7,6 +7,7 @@ namespace Business.Interfaces
     {
         Task<bool> AddLine(string color);
         Task<bool> AddCircle(string color);
+        Task<bool> AddShape(string shape, string color);
         void Paint();
     }
 }

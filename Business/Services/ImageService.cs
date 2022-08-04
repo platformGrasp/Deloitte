@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using Business.Interfaces;
 using Model;
@@ -40,6 +41,22 @@ namespace Business.Services
             }
 
             return await Task.FromResult(true);
+        }
+
+        public async Task<bool> AddShape(string shape, string color)
+        {
+
+            try
+            {
+                _canvas.AddShape(shape, Color.FromName(color));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            return true;
         }
 
         public void Paint()
