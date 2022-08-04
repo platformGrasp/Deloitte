@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Model.Shapes
 {
@@ -6,6 +7,7 @@ namespace Model.Shapes
     {
         public override int Draw()
         {
+            Debug.WriteLine("Drawing Line");
             System.Console.WriteLine("Drawing Line");
             return 1;
         }

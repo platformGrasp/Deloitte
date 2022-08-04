@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using Model.Shapes;
 
 namespace Model.Decorators
@@ -17,6 +18,7 @@ namespace Model.Decorators
 
         private void setColor()
         {
+            Debug.WriteLine("Circle Color: Red");
             System.Console.WriteLine("Circle Color: Red");
             Shape.SetColor(Color.Red);
         }

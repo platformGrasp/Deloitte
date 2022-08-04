@@ -9,3 +9,5 @@
 /Model/obj
 /Test.Console/bin/Debug/netcoreapp3.1
 /Test.Console/obj
+/Business/bin/Debug/netcoreapp3.1
+/Business/obj
